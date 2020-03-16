@@ -1,7 +1,7 @@
 import java.util.Random;
 
 int degrees = 0;
-int particleCount = 500;
+int particleCount = 1200;
 int width = 2000;
 int height = 800;
 
@@ -12,8 +12,8 @@ CenterMass centerMass = new CenterMass();
 void setup() {
   size(2000, 800, P3D);
   for (int i = 0; i < particleCount; i++) {
-    int randomRadius = new Random().nextInt(200 - 200 + 1) + 200;
-    int randomTilt = new Random().nextInt(180 - 0 + 1) + 0;
+    int randomRadius = new Random().nextInt(400 - 200 + 1) + 200;
+    int randomTilt = new Random().nextInt(5 - 0 + 1) + 0;
     int randomRotate = (int) (360 * Math.random());
     particles.add(new Particle(randomRadius, randomTilt, randomRotate));
   }
@@ -21,6 +21,7 @@ void setup() {
 
 void draw() {
   background(10);
+  camera(1000, 200, 1000, 1000, 400, 0, 0, 1, 0);
   centerMass.display();
   for (int i = particles.size() - 1; i >= 0; i--) {
     particles.get(i).display();
@@ -45,7 +46,7 @@ class CenterMass {
     translate(this.xpos, this.ypos, this.zpos);
     fill(color(50, 50, 50));
     sphereDetail(30);
-    sphere(50);
+    sphere(100);
   }
 }
 
